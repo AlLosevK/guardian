@@ -1,0 +1,15 @@
+footer{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-align-items: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ea7ea7;
+  height: 100%;
+  font-size: calc(10px + .2vmin);
+  color: #b74b74;
+}
