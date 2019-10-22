@@ -8,10 +8,5 @@ main{
   -ms-align-items: center;
   align-items: center;
   text-align: center;
-}
-.main-search{
-  width: 100%;
-  padding: 10px 7px;
-  border: 2px solid;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 30px;
 }

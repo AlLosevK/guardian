@@ -7,9 +7,8 @@ function Header() {
       <header className="header">
         <nav className="container">
           <a
-            className="header-link"
-            href="https://google.ru"
-            target="_blank"
+            className="header-link text-info"
+            href="/"
             rel="noopener noreferrer"
           >
             Главная

@@ -4,14 +4,12 @@ import './footer.css';
 function Footer() {
   return (
     <>
-      <footer className="footer">
-        <div className="container">
+      <footer className="footer mt-auto py-3 bg-info">
           <span
-            className="footer-link"
+            className="footer-copyright text-muted"
           >
              Copyright © ShuReYaki-sempai 2019  Все права защищены
           </span>
-        </div>
       </footer>
     </>
   );

@@ -1,4 +1,4 @@
-footer{
+.footer{
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
@@ -8,8 +8,10 @@ footer{
   -ms-align-items: center;
   align-items: center;
   text-align: center;
-  background-color: #ea7ea7;
-  height: 100%;
   font-size: calc(10px + .2vmin);
-  color: #b74b74;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.footer-copyright{
+  padding: 10px 0;
 }

@@ -1,0 +1,20 @@
+.main__result-err{
+  color: #f20;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px 0;
+  margin: 20px auto;
+  border: 2px solid #f20;
+  border-radius: 5px;
+  text-shadow: hoff voff blur #000;
+  background-color: #ff0;
+}
+.badge {
+  margin-left: 15px;
+}
+a.results__item{
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
