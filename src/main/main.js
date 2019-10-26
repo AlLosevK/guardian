@@ -16,55 +16,56 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    fetch(this.props.APIurl)
-      .then(response => response.json())
-      .then(
-        response => {
-          this.setState({
-            isLoaded: true,
-            articles: response
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-        });
-      }
-    );
+    if (!this.state.articles.response) {
+      console.log("yo");
+      this.fetchAPI(this.props.APIurl);
+    }
   }
-  componentDidUpdate() {
-    fetch(this.props.APIurl+'&page='+this.state.currentPage)
-      .then(response => response.json())
-      .then(
-        response => {
-          this.setState({
-            isLoaded: true,
-            articles: response
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-        });
-      }
-    );
-  }
-  // changePage = () => {
-  //   return(APIpage = APIpage + '&page=' + this.state.currentPage)
-  // }
 
-  updateData = (value) => {
+  componentDidUpdate(prevState) {
+    if (prevState !== this.state) {
+      console.log(prevState);
+      console.log(this.state);
+    }
+  }
+
+  fetchAPI(url) {
+    fetch(url)
+      .then(response => response.json())
+      .then(
+        response => {
+          this.setState({
+            isLoaded: true,
+            articles: response
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+        });
+      }
+    );
+  }
+
+  updateCurrentPage = (value) => {
     this.setState({
       currentPage: value
-    })
+    });
+    this.updateAPIurl();
+  }
+
+  updateAPIurl = () => {
+    this.setState({
+      APIurl: this.props.APIurl +'&page='+this.state.currentPage
+    });
+    this.fetchAPI(this.state.APIurl);
   }
 
   render(){
     const { error, isLoaded, articles } = this.state;
-    if (articles.message!==false) {
-      return <div className="container"><div className="alert alert-danger" role="alert">Ошибка: {articles.message}</div></div>;
+    if (!articles.response && isLoaded) {
+      return <div className="container"><div className="alert alert-danger" role="alert">Ошибка: API error</div></div>;
     } else if (!isLoaded) {
         return <div className="container"><div className="spinner-border text-primary" role="status"><span className="sr-only">Loading...</span></div></div>;
       } else {
@@ -74,15 +75,15 @@ class Main extends Component {
             <div className="container">
               <Search />
               <Result
-                error={ error}
+                error={ error }
                 isLoaded={ isLoaded }
                 articles={ articles }
                 currentPage={ articles.response.currentPage }
                 />
               <Pagination
-                updateData={this.updateData}
-                currentPage={ articles.response.currentPage }
-                pages= { articles.response.pages } />
+                updateAPIurl={ this.updateAPIurl }
+                updateCurrentPage={ this.updateCurrentPage }
+                currentPage={ articles.response.currentPage } />
             </div>
           </main>
         </>

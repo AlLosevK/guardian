@@ -13,8 +13,12 @@
 .badge {
   margin-left: 15px;
 }
-a.results__item{
+button.results__item{
   margin-bottom: 15px;
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  color: #88f;
+}
+button.results__item:hover{
+  color: #00f;
 }

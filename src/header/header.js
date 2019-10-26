@@ -6,13 +6,13 @@ function Header() {
     <>
       <header className="header">
         <nav className="container">
-          <a
+          <button
             className="header-link text-info"
             href="/"
             rel="noopener noreferrer"
           >
             Главная
-          </a>
+          </button>
         </nav>
       </header>
     </>

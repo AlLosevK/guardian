@@ -4,11 +4,14 @@ import './result.css';
 class Result extends Component {
     constructor(props) {
         super(props);
+        this.state={
+
+        }
     }
 
     render() {
       const { error, isLoaded, articles } = this.props;
-        if (error) {
+        if (error===1) {
           return <div className="alert alert-danger" role="alert">Ошибка: {error.message}</div>;
         } else if (!isLoaded) {
           return <div class="spinner-border text-primary" role="status">
@@ -21,7 +24,7 @@ class Result extends Component {
                 articles.response.results.map((d, idx)=>{
                  return (
                    <>
-                     <a
+                     <button
                       key={idx}
                       className="results__item list-group-item"
                       href={d.webUrl}
@@ -36,7 +39,7 @@ class Result extends Component {
                             </span>
                           </h5>
                         </div>
-                     </a>
+                     </button>
                    </>
                  )
                })

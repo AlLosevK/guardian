@@ -10,8 +10,10 @@
 }
 
 .header-link {
-  padding: 20;
+  padding: 10px;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
 }
 .header-link:hover{
   color: #a7eec0;

@@ -2,30 +2,66 @@
 import './pagination.css';
 
 class Pagination extends Component {
-    SetPage = (pages) => {
-      if (this.props.currentPage > 2) {
+    SetPage = () => {
+      if(this.props.currentPage===1){
         return(
           <>
-            <li className="page-item">
-              <a
+            <li className="page-item disabled">
+              <span
                 className="page-link"
-                href="#"
-                onClick={() => { this.props.updateData(this.props.currentPage - 1)}}
-                > { this.props.currentPage  - 1 }</a>
+                onClick={() => { this.props.updateCurrentPage(1);}}>Previous</span>
+            </li>
+            <li className="page-item active" aria-current="page">
+              <span className="page-link"
+                >{ this.props.currentPage }
+                <span className="sr-only">
+                (current)</span>
+              </span>
+            </li>
+              <li className="page-item">
+                <button
+                  className="page-link"
+
+                  onClick={() => { this.props.updateCurrentPage(this.props.currentPage + 1);}}>
+                  { this.props.currentPage  + 1 }</button>
+              </li>
+            <li className="page-item">
+              <button
+                className="page-link"
+
+                onClick={() => { this.props.updateCurrentPage(this.props.currentPage + 2);}}
+                >{ this.props.currentPage  + 2 }</button>
+            </li>
+          </>
+        )
+      }else if (this.props.currentPage===2) {
+        return(
+          <>
+            <li className="page-item disabled">
+              <span
+                className="page-link"
+                onClick={() => { this.props.updateCurrentPage(1);}}>Previous</span>
             </li>
             <li className="page-item">
-              <a
+              <button
                 className="page-link"
-                href="#"
-                onClick={() => { this.props.updateData(this.props.currentPage)}}
-                > { this.props.currentPage } </a>
+
+                onClick={() => { this.props.updateCurrentPage(this.props.currentPage - 1);}}>
+                { this.props.currentPage  - 1 }</button>
+            </li>
+            <li className="page-item active" aria-current="page">
+              <span className="page-link"
+                >{ this.props.currentPage }
+                <span className="sr-only">
+                (current)</span>
+              </span>
             </li>
             <li className="page-item">
-              <a
+              <button
                 className="page-link"
-                href="#"
-                onClick={() => { this.props.updateData(this.props.currentPage + 1)}}
-                > { this.props.currentPage  + 1 }</a>
+
+                onClick={() => { this.props.updateCurrentPage(this.props.currentPage + 1);}}
+                >{ this.props.currentPage  + 1 }</button>
             </li>
           </>
         )
@@ -33,25 +69,26 @@ class Pagination extends Component {
         return(
           <>
             <li className="page-item">
-              <a
+              <span
                 className="page-link"
-                href="#"
-                onClick={() => { this.props.updateData(1)}}
-                > 1 </a>
+                onClick={() => { this.props.updateCurrentPage(1);}}>Previous</span>
             </li>
             <li className="page-item">
-              <a
+              <button
                 className="page-link"
-                href="#"
-                onClick={() => { this.props.updateData(2)}}
-                > 2 </a>
+                onClick={() => { this.props.updateCurrentPage(this.props.currentPage - 1);}}>{ this.props.currentPage - 1 }</button>
+            </li>
+            <li className="page-item active" aria-current="page">
+              <span className="page-link">
+                { this.props.currentPage }
+                <span className="sr-only">
+                (current)</span>
+              </span>
             </li>
             <li className="page-item">
-              <a
+              <button
                 className="page-link"
-                href="#"
-                onClick={() => { this.props.updateData(3)}}
-                > 3 </a>
+                onClick={() => { this.props.updateCurrentPage(this.props.currentPage + 1);}}>{ this.props.currentPage +1 }</button>
             </li>
           </>
         )
@@ -62,27 +99,12 @@ class Pagination extends Component {
       return(
             <div className="container">
               <ul className="pagination">
+                { this.SetPage() }
                 <li className="page-item">
-                  <a
+                  <button
                     className="page-link"
-                    href="#"
-                    aria-label="Previous"
-                    onClick={() => { this.props.updateData(1)}}>
-                    <span aria-hidden="true">&laquo;</span>
-                    <span className="sr-only">Previous</span>
-                  </a>
-                </li>
-                { this.SetPage(this.props.pages) }
-                <li className="page-item">
-                  <a
-                    className="page-link"
-                    href="#"
-                    aria-label="Next"
-                    onClick={() => { this.props.updateData(this.props.currentPage+1)}}
-                    >
-                    <span aria-hidden="true">&raquo;</span>
-                    <span className="sr-only">Next</span>
-                  </a>
+                    onClick={() => { this.props.updateCurrentPage(this.props.currentPage+1);}}
+                    >Next</button>
                 </li>
               </ul>
             </div>
