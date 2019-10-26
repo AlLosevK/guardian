@@ -17,7 +17,6 @@ class Main extends Component {
 
   componentDidMount() {
     if (!this.state.articles.response) {
-      console.log("yo");
       this.fetchAPI(this.props.APIurl);
     }
   }
