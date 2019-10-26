@@ -1,14 +1,5 @@
-.main__result-err{
-  color: #f20;
-  text-transform: uppercase;
-  font-weight: bold;
-  width: 100%;
-  padding: 10px 0;
-  margin: 20px auto;
-  border: 2px solid #f20;
-  border-radius: 5px;
-  text-shadow: hoff voff blur #000;
-  background-color: #ff0;
+.main__results {
+  margin-bottom: 1.3rem !important;
 }
 .badge {
   margin-left: 15px;

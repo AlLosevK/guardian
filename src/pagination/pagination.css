@@ -1,0 +1,13 @@
+.results__nav {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-align-items: center;
+  justify-content: center;
+}
+.results__nav-form {
+  margin-left: 1rem;
+}

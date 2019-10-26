@@ -97,8 +97,8 @@ class Pagination extends Component {
 
     render() {
       return(
-            <div className="container">
-              <ul className="pagination">
+            <div className="container results__nav">
+              <ul className="results__nav-pagination pagination">
                 { this.SetPage() }
                 <li className="page-item">
                   <button
@@ -107,6 +107,28 @@ class Pagination extends Component {
                     >Next</button>
                 </li>
               </ul>
+              <form className="results__nav-form">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option
+                    className="page-link"
+                    value="10"
+                    onClick={() => { this.props.updatePageSize(10);}}
+                    >10
+                  </option>
+                  <option
+                    className="page-link"
+                    value="20"
+                    onClick={() => { this.props.updatePageSize(20);}}
+                    >20
+                  </option>
+                  <option
+                    className="page-link"
+                    value="30"
+                    onClick={() => { this.props.updatePageSize(30);}}
+                    >30
+                  </option>
+                  </select>
+              </form>
             </div>
       )
     }

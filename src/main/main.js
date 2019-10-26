@@ -11,20 +11,15 @@ class Main extends Component {
       error: null,
       isLoaded: false,
       articles: [],
-      currentPage: 1
+      currentPage: 1,
+      searchQuery: '',
+      pageSize: 10
     };
   }
 
   componentDidMount() {
     if (!this.state.articles.response) {
       this.fetchAPI(this.props.APIurl);
-    }
-  }
-
-  componentDidUpdate(prevState) {
-    if (prevState !== this.state) {
-      console.log(prevState);
-      console.log(this.state);
     }
   }
 
@@ -50,15 +45,25 @@ class Main extends Component {
   updateCurrentPage = (value) => {
     this.setState({
       currentPage: value
-    });
-    this.updateAPIurl();
+    }, this.updateAPIurl);
+  }
+
+  updateSearchQuery = (value) =>{
+    this.setState({
+      searchQuery: value
+    }, this.updateAPIurl);
+  }
+
+  updatePageSize = (value) => {
+    this.setState({
+      pageSize: value
+    }, this.updateAPIurl);
   }
 
   updateAPIurl = () => {
     this.setState({
-      APIurl: this.props.APIurl +'&page='+this.state.currentPage
-    });
-    this.fetchAPI(this.state.APIurl);
+      APIurl: this.props.APIurl +'&page='+this.state.currentPage+'&page-size='+this.state.pageSize+'&q='+this.state.searchQuery
+    }, () => this.fetchAPI(this.state.APIurl));
   }
 
   render(){
@@ -72,7 +77,8 @@ class Main extends Component {
         <>
           <main className="main">
             <div className="container">
-              <Search />
+              <Search
+                updateSearchQuery={ this.updateSearchQuery }/>
               <Result
                 error={ error }
                 isLoaded={ isLoaded }
@@ -82,7 +88,8 @@ class Main extends Component {
               <Pagination
                 updateAPIurl={ this.updateAPIurl }
                 updateCurrentPage={ this.updateCurrentPage }
-                currentPage={ articles.response.currentPage } />
+                currentPage={ articles.response.currentPage }
+                updatePageSize={ this.updatePageSize } />
             </div>
           </main>
         </>

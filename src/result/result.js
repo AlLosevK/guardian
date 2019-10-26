@@ -6,8 +6,9 @@ class Result extends Component {
         super(props);
         this.state={
 
-        }
+        };
     }
+
 
     render() {
       const { error, isLoaded, articles } = this.props;
@@ -19,15 +20,16 @@ class Result extends Component {
                  </div>;
         } else {
           return (
-            <div className="main-results results list-group">
+            <div className="main__results results list-group">
               {
                 articles.response.results.map((d, idx)=>{
                  return (
                    <>
-                     <button
+                     <a
                       key={idx}
                       className="results__item list-group-item"
                       href={d.webUrl}
+                      target="_blank"
                         >
                         <div
                           className="results__link"
@@ -39,7 +41,7 @@ class Result extends Component {
                             </span>
                           </h5>
                         </div>
-                     </button>
+                     </a>
                    </>
                  )
                })
