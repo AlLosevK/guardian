@@ -18,12 +18,20 @@ class Main extends Component {
   }
 
   componentDidMount() {
+    const headers = new Headers({
+      'Access-Control-Allow-Origin': 'https://losev.site/react-guardian-api/',
+      'Access-Control-Allow-Credentials': 'false'
+    });
+    const options = {
+        headers
+    };
     if (!this.state.articles.response) {
-      this.fetchAPI(this.props.APIurl);
+      this.fetchAPI(this.props.APIurl, options);
     }
+    console.log(this.props.APIurl);
   }
 
-  fetchAPI(url) {
+  fetchAPI(url, options) {
     fetch(url)
       .then(response => response.json())
       .then(

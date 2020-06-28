@@ -30,6 +30,7 @@ class Result extends Component {
                       className="results__item list-group-item"
                       href={d.webUrl}
                       target="_blank"
+                      rel="noopener noreferrer"
                         >
                         <div
                           className="results__link"

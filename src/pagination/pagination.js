@@ -108,7 +108,7 @@ class Pagination extends Component {
                 </li>
               </ul>
               <form className="results__nav-form">
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select className="form-control" id="exampleFormControlSelect1">
                   <option
                     className="page-link"
                     value="10"
